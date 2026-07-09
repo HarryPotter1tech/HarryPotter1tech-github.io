@@ -5,3 +5,4 @@ baseurl: "/HarryPotter1tech-github.io"
 url: "https://harrypotter1tech.github.io"
 markdown: kramdown
 theme: null
+permalink: flat

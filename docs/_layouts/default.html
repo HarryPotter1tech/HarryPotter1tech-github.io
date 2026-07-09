@@ -3,34 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title | default: "操作系统导论（中文版）" }}</title>
+  <title>{% if page.title %}{{ page.title }} — {% endif %}操作系统导论</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+SC:wght@400;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/HarryPotter1tech-github.io/assets/css/overwatch.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 </head>
 <body>
-  <div class="stars-bg"></div>
-  <nav class="top-nav">
-    <div class="nav-inner">
-      <a href="/HarryPotter1tech-github.io/" class="nav-logo">
-        <span class="logo-icon">◆</span>
-        <span class="logo-text">OSTEP 中文版</span>
-      </a>
-      <div class="nav-links">
-        <a href="/HarryPotter1tech-github.io/">首页</a>
-        <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/" target="_blank">原版</a>
-      </div>
-    </div>
-  </nav>
+  <div class="wrapper">
+    {% include sidebar.html %}
 
-  <main class="content">
-    {{ content }}
-  </main>
+    <div class="main">
+      <header class="topbar">
+        <button class="hamburger" id="sidebarToggle" aria-label="切换侧栏">☰</button>
+        <a href="{{ '/' | relative_url }}" class="topbar-title">操作系统导论</a>
+      </header>
 
-  <footer class="footer">
-    <div class="footer-inner">
-      <p>操作系统导论 · 中文翻译 · <a href="https://github.com/HarryPotter1tech/HarryPotter1tech-github.io" target="_blank">GitHub</a></p>
+      <article class="content">
+        <div class="content-inner">
+          {{ content }}
+        </div>
+      </article>
+
+      <footer class="footer">
+        <p>操作系统导论（中文版）· <a href="https://github.com/HarryPotter1tech/HarryPotter1tech-github.io" target="_blank">GitHub</a></p>
+      </footer>
     </div>
-  </footer>
+  </div>
+
+  <script>
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    const toggle = document.getElementById('sidebarToggle');
+    const close = document.getElementById('sidebarClose');
+
+    function openSidebar() { sidebar.classList.add('open'); overlay.classList.add('show'); }
+    function closeSidebar() { sidebar.classList.remove('open'); overlay.classList.remove('show'); }
+    toggle.onclick = openSidebar;
+    close.onclick = closeSidebar;
+    overlay.onclick = closeSidebar;
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeSidebar();
+    });
+
+    function filterSidebar(val) {
+      const links = document.querySelectorAll('.sidebar-link');
+      const sections = document.querySelectorAll('.sidebar-section');
+      const q = val.toLowerCase().trim();
+      links.forEach(function(link) {
+        const match = link.dataset.title.toLowerCase().includes(q) ||
+                      link.textContent.toLowerCase().includes(q);
+        link.style.display = q === '' ? '' : (match ? '' : 'none');
+      });
+      if (q !== '') {
+        sections.forEach(function(sec) {
+          const vis = Array.from(sec.querySelectorAll('.sidebar-link')).some(function(l) { return l.style.display !== 'none'; });
+          sec.style.display = vis ? '' : 'none';
+        });
+      } else {
+        sections.forEach(function(sec) { sec.style.display = ''; });
+        links.forEach(function(link) { link.style.display = ''; });
+      }
+    }
+
+    // highlight active link
+    document.querySelectorAll('.sidebar-link.active').forEach(function(el) {
+      el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    });
+  </script>
 </body>
 </html>
