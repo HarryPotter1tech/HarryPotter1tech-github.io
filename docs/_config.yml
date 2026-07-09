@@ -1,5 +1,5 @@
 # GitHub Pages config for 操作系统导论
 title: 操作系统导论（中文版）
-description: Operating Systems: Three Easy Pieces - 中文翻译
+description: "Operating Systems: Three Easy Pieces - 中文翻译"
 markdown: kramdown
 theme: jekyll-theme-cayman
