@@ -1,11 +1,10 @@
+# TOC for 操作系统导论
 - id: preface
   title: 前言
   section: 前言
-
 - id: toc
   title: 目录
   section: 前言
-
 - id: "01"
   title: 第1章 对话
   section: 虚拟化
@@ -39,7 +38,6 @@
 - id: "11"
   title: 第11章 虚拟化总结对话
   section: 虚拟化
-
 - id: "12"
   title: 第12章 关于内存虚拟化的对话
   section: 内存虚拟化
@@ -79,7 +77,6 @@
 - id: "24"
   title: 第24章 内存虚拟化总结对话
   section: 内存虚拟化
-
 - id: "25"
   title: 第25章 关于并发的对话
   section: 并发
@@ -110,7 +107,6 @@
 - id: "34"
   title: 第34章 并发的总结对话
   section: 并发
-
 - id: "35"
   title: 第35章 关于持久性的对话
   section: 持久化
@@ -144,7 +140,6 @@
 - id: "45"
   title: 第45章 关于持久的总结对话
   section: 持久化
-
 - id: "46"
   title: 第46章 关于分布式的对话
   section: 分布式
@@ -160,7 +155,6 @@
 - id: "50"
   title: 第50章 关于分布式的总结对话
   section: 分布式
-
 - id: fla
   title: 附录A 虚拟机监视器对话
   section: 附录

@@ -11,65 +11,25 @@
 <body>
   <div class="wrapper">
     {% include sidebar.html %}
-
     <div class="main">
       <header class="topbar">
         <button class="hamburger" id="sidebarToggle" aria-label="切换侧栏">☰</button>
         <a href="{{ '/' | relative_url }}" class="topbar-title">操作系统导论</a>
       </header>
-
-      <article class="content">
-        <div class="content-inner">
-          {{ content }}
-        </div>
-      </article>
-
+      <article class="content"><div class="content-inner">{{ content }}</div></article>
       <footer class="footer">
         <p>操作系统导论（中文版）· <a href="https://github.com/HarryPotter1tech/HarryPotter1tech-github.io" target="_blank">GitHub</a></p>
       </footer>
     </div>
   </div>
-
   <script>
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('sidebarOverlay');
-    const toggle = document.getElementById('sidebarToggle');
-    const close = document.getElementById('sidebarClose');
-
-    function openSidebar() { sidebar.classList.add('open'); overlay.classList.add('show'); }
-    function closeSidebar() { sidebar.classList.remove('open'); overlay.classList.remove('show'); }
-    toggle.onclick = openSidebar;
-    close.onclick = closeSidebar;
-    overlay.onclick = closeSidebar;
-
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeSidebar();
-    });
-
-    function filterSidebar(val) {
-      const links = document.querySelectorAll('.sidebar-link');
-      const sections = document.querySelectorAll('.sidebar-section');
-      const q = val.toLowerCase().trim();
-      links.forEach(function(link) {
-        const match = link.dataset.title.toLowerCase().includes(q) ||
-                      link.textContent.toLowerCase().includes(q);
-        link.style.display = q === '' ? '' : (match ? '' : 'none');
-      });
-      if (q !== '') {
-        sections.forEach(function(sec) {
-          const vis = Array.from(sec.querySelectorAll('.sidebar-link')).some(function(l) { return l.style.display !== 'none'; });
-          sec.style.display = vis ? '' : 'none';
-        });
-      } else {
-        sections.forEach(function(sec) { sec.style.display = ''; });
-        links.forEach(function(link) { link.style.display = ''; });
-      }
-    }
-
-    // highlight active link
-    document.querySelectorAll('.sidebar-link.active').forEach(function(el) {
-      el.scrollIntoView({ block: 'center', behavior: 'smooth' });
-    });
+    const s=document.getElementById('sidebar'),o=document.getElementById('sidebarOverlay'),t=document.getElementById('sidebarToggle'),c=document.getElementById('sidebarClose');
+    function open(){s.classList.add('open');o.classList.add('show')}
+    function close(){s.classList.remove('open');o.classList.remove('show')}
+    t.onclick=open;c.onclick=close;o.onclick=close;
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+    function filterSidebar(v){const q=v.toLowerCase().trim();document.querySelectorAll('.sidebar-link').forEach(function(l){l.style.display=q===''?'':(l.dataset.title.toLowerCase().includes(q)||l.textContent.toLowerCase().includes(q)?'':'none')});document.querySelectorAll('.sidebar-section').forEach(function(s){if(q!==''){s.style.display=Array.from(s.querySelectorAll('.sidebar-link')).some(function(l){return l.style.display!=='none'})?'':'none'}else{s.style.display=''}});if(q===''){document.querySelectorAll('.sidebar-link').forEach(function(l){l.style.display=''})}}
+    document.querySelectorAll('.sidebar-link.active').forEach(function(e){e.scrollIntoView({block:'center',behavior:'smooth'})});
   </script>
 </body>
 </html>
