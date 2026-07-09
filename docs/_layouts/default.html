@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title | default: "操作系统导论（中文版）" }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+SC:wght@400;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/HarryPotter1tech-github.io/assets/css/overwatch.css">
+</head>
+<body>
+  <div class="stars-bg"></div>
+  <nav class="top-nav">
+    <div class="nav-inner">
+      <a href="/HarryPotter1tech-github.io/" class="nav-logo">
+        <span class="logo-icon">◆</span>
+        <span class="logo-text">OSTEP 中文版</span>
+      </a>
+      <div class="nav-links">
+        <a href="/HarryPotter1tech-github.io/">首页</a>
+        <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/" target="_blank">原版</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="content">
+    {{ content }}
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>操作系统导论 · 中文翻译 · <a href="https://github.com/HarryPotter1tech/HarryPotter1tech-github.io" target="_blank">GitHub</a></p>
+    </div>
+  </footer>
+</body>
+</html>

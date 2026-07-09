@@ -1,3 +1,7 @@
+---
+layout: default
+title: "前    言"
+---
 # 前    言
 
 ## 致本书读者

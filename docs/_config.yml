@@ -1,5 +1,7 @@
-# GitHub Pages config for 操作系统导论
+# site config
 title: 操作系统导论（中文版）
 description: "Operating Systems: Three Easy Pieces - 中文翻译"
+baseurl: "/HarryPotter1tech-github.io"
+url: "https://harrypotter1tech.github.io"
 markdown: kramdown
-theme: jekyll-theme-cayman
+theme: null
